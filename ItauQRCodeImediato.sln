@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35027.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinClient", "WinClient\WinClient.csproj", "{71C2600A-A729-4D62-97B0-C47E8C14094D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{10D32E24-577E-4026-BC59-057DA0B19A38}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "Business\Business.csproj", "{CCFCE17A-C50E-4E1D-B1E6-2FE8438900FF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{71C2600A-A729-4D62-97B0-C47E8C14094D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71C2600A-A729-4D62-97B0-C47E8C14094D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71C2600A-A729-4D62-97B0-C47E8C14094D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71C2600A-A729-4D62-97B0-C47E8C14094D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10D32E24-577E-4026-BC59-057DA0B19A38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10D32E24-577E-4026-BC59-057DA0B19A38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10D32E24-577E-4026-BC59-057DA0B19A38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10D32E24-577E-4026-BC59-057DA0B19A38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCFCE17A-C50E-4E1D-B1E6-2FE8438900FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCFCE17A-C50E-4E1D-B1E6-2FE8438900FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCFCE17A-C50E-4E1D-B1E6-2FE8438900FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCFCE17A-C50E-4E1D-B1E6-2FE8438900FF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B60B1423-5454-4253-877A-820B23452E92}
+	EndGlobalSection
+EndGlobal
