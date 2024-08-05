@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "ey7HmxtxLWE=",
+  "success": true,
+  "projectFilePath": "C:\\repos\\ItauQRCodeImediato\\Business\\Business.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\adner\\.nuget\\packages\\restsharp\\111.4.1\\restsharp.111.4.1.nupkg.sha512"
+  ],
+  "logs": []
+}
