@@ -25,5 +25,4 @@ Este projeto demonstra as seguintes funcionalidades:
 - Conta no Itaú for Delevopers com Client Id e Client Secret
 
 ## Exemplo do Projeto
-O gif abaixo apresenta a aplicação Cliente Windows em execução.
 ![demo](https://github.com/adnerscarpelini/ItauQRCodeImediato/blob/main/demo.gif?raw=true)
