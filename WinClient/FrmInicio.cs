@@ -1,5 +1,4 @@
 using QRCoder;
-using System.Globalization;
 
 namespace WinClient
 {
@@ -43,9 +42,9 @@ namespace WinClient
 
         private void loadComboBoxAmbiente()
         {
-            Dictionary<int, string> values = new Dictionary<int, string>
+            Dictionary<string, string> values = new Dictionary<string, string>
             {
-                { 1, "Sandbox (https://sandbox.devportal.itau.com.br/)" },
+                { "sandbox", "Sandbox (https://sandbox.devportal.itau.com.br/)" },
             };
 
             var items = values.Select(kvp => new { Key = kvp.Key, Value = kvp.Value }).ToList();
