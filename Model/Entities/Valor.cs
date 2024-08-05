@@ -8,7 +8,7 @@ namespace Model.Entities
 {
     public class Valor
     {
-        public decimal original { get; set; }
+        public string? original { get; set; }
         public string? modalidadeAlteracao { get; set; }
     }
 }

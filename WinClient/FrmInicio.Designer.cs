@@ -52,6 +52,9 @@
             lblQRCodePix = new Label();
             lblAmbiente = new Label();
             cbxAmbiente = new ComboBox();
+            lblOutput = new Label();
+            backgroundWorker = new System.ComponentModel.BackgroundWorker();
+            txtOutput = new RichTextBox();
             pnlDadosAutenticacao.SuspendLayout();
             pnlDadosCobranca.SuspendLayout();
             pnlQRCodePix.SuspendLayout();
@@ -63,12 +66,13 @@
             btnGerarQRCodePix.Cursor = Cursors.Hand;
             btnGerarQRCodePix.FlatStyle = FlatStyle.Flat;
             btnGerarQRCodePix.Font = new Font("Roboto", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnGerarQRCodePix.Location = new Point(711, 393);
+            btnGerarQRCodePix.Location = new Point(711, 522);
             btnGerarQRCodePix.Name = "btnGerarQRCodePix";
             btnGerarQRCodePix.Size = new Size(124, 38);
             btnGerarQRCodePix.TabIndex = 6;
             btnGerarQRCodePix.Text = "Gerar QR Code";
             btnGerarQRCodePix.UseVisualStyleBackColor = true;
+            btnGerarQRCodePix.Click += btnGerarQRCodePix_Click;
             btnGerarQRCodePix.Paint += btnGerarQRCodePix_Paint;
             // 
             // pnlDadosAutenticacao
@@ -210,6 +214,7 @@
             txtValor.Name = "txtValor";
             txtValor.Size = new Size(111, 22);
             txtValor.TabIndex = 3;
+            txtValor.Text = "0";
             txtValor.TextAlign = HorizontalAlignment.Right;
             txtValor.KeyPress += txtValor_KeyPress;
             // 
@@ -285,11 +290,35 @@
             cbxAmbiente.Size = new Size(430, 22);
             cbxAmbiente.TabIndex = 8;
             // 
+            // lblOutput
+            // 
+            lblOutput.AutoSize = true;
+            lblOutput.Font = new Font("Roboto", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblOutput.Location = new Point(12, 395);
+            lblOutput.Name = "lblOutput";
+            lblOutput.Size = new Size(44, 14);
+            lblOutput.TabIndex = 9;
+            lblOutput.Text = "Output";
+            // 
+            // txtOutput
+            // 
+            txtOutput.BackColor = Color.Black;
+            txtOutput.BorderStyle = BorderStyle.None;
+            txtOutput.ForeColor = Color.White;
+            txtOutput.Location = new Point(12, 412);
+            txtOutput.Name = "txtOutput";
+            txtOutput.ReadOnly = true;
+            txtOutput.Size = new Size(823, 104);
+            txtOutput.TabIndex = 10;
+            txtOutput.Text = "";
+            // 
             // FrmInicio
             // 
             AutoScaleDimensions = new SizeF(7F, 14F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(846, 445);
+            ClientSize = new Size(846, 572);
+            Controls.Add(txtOutput);
+            Controls.Add(lblOutput);
             Controls.Add(cbxAmbiente);
             Controls.Add(lblAmbiente);
             Controls.Add(lblQRCodePix);
@@ -341,5 +370,8 @@
         private Label lblAmbiente;
         private ComboBox cbxAmbiente;
         private PictureBox imgQRCodePix;
+        private Label lblOutput;
+        private System.ComponentModel.BackgroundWorker backgroundWorker;
+        private RichTextBox txtOutput;
     }
 }

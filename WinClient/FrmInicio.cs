@@ -1,3 +1,5 @@
+using Business.Services;
+using Model.Entities;
 using QRCoder;
 
 namespace WinClient
@@ -8,11 +10,18 @@ namespace WinClient
         private Color azulEscuro = Color.FromArgb(13, 23, 51);
         private Color laranja = Color.FromArgb(236, 112, 0);
 
+        ItauQRCodeImediatoService itauQRCodeImediatoService = new ItauQRCodeImediatoService();
+
         public FrmInicio()
         {
             InitializeComponent();
             setColorTheme();
             loadComboBoxAmbiente();
+
+            //Fixar valores para facilitar o teste
+            txtClientId.Text = "";
+            txtClientSecret.Text = "";
+            txtChave.Text = "60701190000104";
         }
 
         private void setColorTheme()
@@ -37,6 +46,7 @@ namespace WinClient
                 lblDataHoraExpiracao.ForeColor =
                 lblPixCopiaCola.ForeColor =
                 lblQRCodePix.ForeColor =
+                lblOutput.ForeColor =
                 Color.White;
         }
 
@@ -110,5 +120,140 @@ namespace WinClient
                 e.Handled = true;
             }
         }
+
+        private async void btnGerarQRCodePix_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                clearFields();
+
+                if (string.IsNullOrWhiteSpace(txtClientId.Text))
+                {
+                    ShowErrorMessage("Informe o Client Id!");
+                    txtClientId.Focus();
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(txtClientSecret.Text))
+                {
+                    ShowErrorMessage("Informe o Client Secret!");
+                    txtClientSecret.Focus();
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(txtChave.Text))
+                {
+                    ShowErrorMessage("Informe a Chave para Receber!");
+                    txtChave.Focus();
+                    return;
+                }
+
+                decimal valor = 0;
+                if (!decimal.TryParse(txtValor.Text, out valor))
+                {
+                    ShowErrorMessage("O Valor informado é inválido!");
+                    txtValor.Focus();
+                    return;
+                }
+
+                if (valor <= 0)
+                {
+                    ShowErrorMessage("O Valor informado é inválido!");
+                    txtValor.Focus();
+                    return;
+                }
+
+                generateLogMessage("Autenticando...");
+                OAuth2 oAuth2;
+                oAuth2 = await itauQRCodeImediatoService.Authenticate(
+                                ambiente: (string)cbxAmbiente.SelectedValue!,
+                                clientId: txtClientId.Text,
+                                clientSecret: txtClientSecret.Text);
+
+                if (oAuth2 != null)
+                {
+                    generateLogMessage("Token recebido: " + oAuth2.access_token);
+
+                    generateLogMessage("Criando Cobrança Imediata via API...");
+                    QRCodeImediato qRCodeImediatoResponse = await itauQRCodeImediatoService.PostQRCodeImediato(
+                                    ambiente: (string)cbxAmbiente.SelectedValue!,
+                                    clientId: txtClientId.Text,
+                                    oAuth2: oAuth2,
+                                    chave: txtChave.Text,
+                                    valor: txtValor.Text);
+
+                    if (qRCodeImediatoResponse != null)
+                    {
+                        generateLogMessage("Cobrança Imediata via API gerada");
+                        generateLogMessage("Identificador da Cobrança Imediata via API gerada: " + qRCodeImediatoResponse.txid);
+
+                        generateLogMessage("Gerando imagem do QR Code...");
+                        loadFieldsQRCodeImediato(qRCodeImediatoResponse);
+                        generateLogMessage("Processo finalizado com sucesso!");
+
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                generateLogMessage(ex.Message);
+                ShowErrorMessage(ex.Message);
+            }
+        }
+
+        private void clearFields()
+        {
+            txtOutput.Text = string.Empty;
+            txtIdentificador.Text = string.Empty;
+            txtDataHoraExpiracao.Text = string.Empty;
+            txtPixCopiaCola.Text = string.Empty;
+            imgQRCodePix.Image = Properties.Resources.pix_aguardando;
+        }
+
+        private void loadFieldsQRCodeImediato(QRCodeImediato qrCodeImediato)
+        {
+            txtIdentificador.Text = qrCodeImediato.txid;
+
+            DateTime? dataHoraCriacao = null;
+
+            if (qrCodeImediato.calendario != null)
+            {
+                if (qrCodeImediato.calendario.criacao.HasValue)
+                {
+                    dataHoraCriacao = qrCodeImediato.calendario.criacao.Value;
+                    DateTime dataHoraExpiracao = dataHoraCriacao.Value;
+
+                    if (qrCodeImediato.calendario.expiracao.HasValue)
+                        dataHoraExpiracao = dataHoraExpiracao.AddSeconds(qrCodeImediato.calendario.expiracao.Value);
+
+                    txtDataHoraExpiracao.Text = dataHoraExpiracao.ToString("dd/MM/yyyy HH:mm:ss");
+                }
+            }
+
+            if (!dataHoraCriacao.HasValue)
+                generateLogMessage("A API não retornou a Data de Criação da Cobrança...");
+
+            if (!string.IsNullOrEmpty(qrCodeImediato.pixCopiaECola))
+            {
+                txtPixCopiaCola.Text = qrCodeImediato.pixCopiaECola;
+
+                QRCodeGenerator qrGenerator = new QRCodeGenerator();
+                QRCodeData qrCodeData = qrGenerator.CreateQrCode(qrCodeImediato.pixCopiaECola, QRCodeGenerator.ECCLevel.Q, true);
+                QRCode qrCode = new QRCode(qrCodeData);
+                Bitmap qrCodeImage = qrCode.GetGraphic(72);
+                imgQRCodePix.Image = qrCodeImage;
+            }
+            else
+                generateLogMessage("A API não retornou os dados do Pix Copia e Cola...");
+
+        }
+
+        private void generateLogMessage(string message)
+        {
+            txtOutput.Text += message + "\n\n";
+            Application.DoEvents();
+        }
+
     }
 }

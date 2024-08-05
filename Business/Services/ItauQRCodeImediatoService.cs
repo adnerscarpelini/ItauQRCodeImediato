@@ -5,7 +5,7 @@ using System.Text.Json;
 
 namespace Business.Services
 {
-    internal class ItauQRCodeImediatoService : IItauQRCodeImediato
+    public class ItauQRCodeImediatoService : IItauQRCodeImediato
     {
 
         public async Task<OAuth2> Authenticate(string ambiente, string clientId, string clientSecret)
@@ -57,7 +57,7 @@ namespace Business.Services
 
         }
 
-        public async Task<QRCodeImediato> PostQRCodeImediato(string ambiente, string clientId, OAuth2 oauth2, QRCodeImediato qrCodeImediato)
+        public async Task<QRCodeImediato> PostQRCodeImediato(string ambiente, string clientId, OAuth2 oAuth2, string chave, string valor)
         {
             try
             {
@@ -75,9 +75,20 @@ namespace Business.Services
                 request.AddHeader("x-itau-apikey", clientId);
                 request.AddHeader("Content-Type", "application/json");
                 request.AddHeader("Accept", "application/json");
-                request.AddHeader("Authorization", oauth2.token_type + " " + oauth2.access_token);
-                request.AddBody(JsonSerializer.Serialize(qrCodeImediato));
+                request.AddHeader("Authorization", oAuth2.token_type + " " + oAuth2.access_token);
+
+                // Criar o Json da Request com interpolação dos parametros recebidos pela tela
+                string jsonBody = $@"
+                {{
+                    ""valor"": {{
+                        ""original"": ""{valor}""
+                    }},
+                    ""chave"": ""{chave}""
+                }}";
+
+                request.AddBody(jsonBody);
                 RestResponse response = await client.ExecuteAsync(request);
+
 
                 QRCodeImediato? qrCodeImediatoResponse = null;
                 if (response.IsSuccessStatusCode)
@@ -109,7 +120,19 @@ namespace Business.Services
         private string? MapErrorMessage(string? errorMessage)
         {
             if (!string.IsNullOrEmpty(errorMessage))
-                return JsonSerializer.Deserialize<Erro>(errorMessage)?.message;
+            {
+                ErroApi? erroApi = JsonSerializer.Deserialize<ErroApi>(errorMessage);
+
+                if (erroApi != null)
+                {
+                    if (erroApi.error != null)
+                        return "Código do Erro: " + erroApi.error.status + " - Mensagem: " + erroApi.error.message;
+                    else
+                        return erroApi.message;
+                }
+                else
+                    return null;
+            }
             else
                 return null;
         }

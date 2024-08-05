@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\repos\\ItauQRCodeImediato\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{71C2600A-A729-4D62-97B0-C47E8C14094D}|WinClient\\WinClient.csproj|c:\\repos\\itauqrcodeimediato\\winclient\\frminicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71C2600A-A729-4D62-97B0-C47E8C14094D}|WinClient\\WinClient.csproj|solutionrelative:winclient\\frminicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{CCFCE17A-C50E-4E1D-B1E6-2FE8438900FF}|Business\\Business.csproj|c:\\repos\\itauqrcodeimediato\\business\\services\\itauqrcodeimediatoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CCFCE17A-C50E-4E1D-B1E6-2FE8438900FF}|Business\\Business.csproj|solutionrelative:business\\services\\itauqrcodeimediatoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CCFCE17A-C50E-4E1D-B1E6-2FE8438900FF}|Business\\Business.csproj|c:\\repos\\itauqrcodeimediato\\business\\interfaces\\iitauqrcodeimediato.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CCFCE17A-C50E-4E1D-B1E6-2FE8438900FF}|Business\\Business.csproj|solutionrelative:business\\interfaces\\iitauqrcodeimediato.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{71C2600A-A729-4D62-97B0-C47E8C14094D}|WinClient\\WinClient.csproj|c:\\repos\\itauqrcodeimediato\\winclient\\frminicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{71C2600A-A729-4D62-97B0-C47E8C14094D}|WinClient\\WinClient.csproj|solutionrelative:winclient\\frminicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{71C2600A-A729-4D62-97B0-C47E8C14094D}|WinClient\\WinClient.csproj|c:\\repos\\itauqrcodeimediato\\winclient\\frminicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{71C2600A-A729-4D62-97B0-C47E8C14094D}|WinClient\\WinClient.csproj|solutionrelative:winclient\\frminicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,31 +22,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "IItauQRCodeImediato.cs",
-              "DocumentMoniker": "C:\\repos\\ItauQRCodeImediato\\Business\\Interfaces\\IItauQRCodeImediato.cs",
-              "RelativeDocumentMoniker": "Business\\Interfaces\\IItauQRCodeImediato.cs",
-              "ToolTip": "C:\\repos\\ItauQRCodeImediato\\Business\\Interfaces\\IItauQRCodeImediato.cs",
-              "RelativeToolTip": "Business\\Interfaces\\IItauQRCodeImediato.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAbAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-05T12:21:01.494Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "FrmInicio.cs",
               "DocumentMoniker": "C:\\repos\\ItauQRCodeImediato\\WinClient\\FrmInicio.cs",
               "RelativeDocumentMoniker": "WinClient\\FrmInicio.cs",
               "ToolTip": "C:\\repos\\ItauQRCodeImediato\\WinClient\\FrmInicio.cs",
               "RelativeToolTip": "WinClient\\FrmInicio.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAQwBMAAAAWAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-04T13:37:46.998Z",
               "IsPinned": true,
@@ -54,17 +40,29 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "ItauQRCodeImediatoService.cs",
               "DocumentMoniker": "C:\\repos\\ItauQRCodeImediato\\Business\\Services\\ItauQRCodeImediatoService.cs",
               "RelativeDocumentMoniker": "Business\\Services\\ItauQRCodeImediatoService.cs",
               "ToolTip": "C:\\repos\\ItauQRCodeImediato\\Business\\Services\\ItauQRCodeImediatoService.cs",
               "RelativeToolTip": "Business\\Services\\ItauQRCodeImediatoService.cs",
-              "ViewState": "AQIAAEUAAAAAAAAAAAAowB8AAAAmAAAA",
+              "ViewState": "AQIAAGAAAAAAAAAAAAAowHUAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-05T12:31:48.316Z",
               "IsPinned": true,
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FrmInicio.cs [Design]",
+              "DocumentMoniker": "C:\\repos\\ItauQRCodeImediato\\WinClient\\FrmInicio.cs",
+              "RelativeDocumentMoniker": "WinClient\\FrmInicio.cs",
+              "ToolTip": "C:\\repos\\ItauQRCodeImediato\\WinClient\\FrmInicio.cs [Design]",
+              "RelativeToolTip": "WinClient\\FrmInicio.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-05T13:32:04.34Z",
+              "EditorCaption": " [Design]"
             }
           ]
         }
